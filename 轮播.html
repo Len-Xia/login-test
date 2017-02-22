@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="jquery-1.8.3.min.js"></script>
+	<style>
+	.banner{width: 500px;height: 500px;border: 1px solid #eee;overflow: hidden;position: relative;}
+	.banner li{background-color: red;list-style-type: none;float: left;width:30px;height:30px;text-align: center;line-height: 30px; border: 1px solid #C1BDB5;cursor: pointer;}
+	.banner ul{position: absolute;margin: 0;padding: 0;right: 221px;bottom: 10px; }
+	.banner ul .on{background-color: blue;}
+	</style>
+	
+</script>
+
+<script type="text/javascript">
+	var t = n =0, count;
+	$(document).ready(function(){
+		count = $(".banner a").length;
+		$(".banner a:not(:first-child)").hide();
+		$(".banner li").click(function(){
+			var i = $(this).text() -1;
+			n = i;
+			if (i >= count) return;   
+			$(".banner a").filter(":visible").fadeOut(1000).parent().children().eq(i).fadeIn(1000);
+			$(this).toggleClass("on");
+			$(this).siblings().removeAttr("class"); 
+		}); 
+
+		t = setInterval("showAuto()", 4000);
+		$(".banner a").hover(function(){				
+			clearInterval(t)
+		},function(){
+			t = setInterval("showAuto()", 4000);
+		});		
+	});
+	function showAuto(){
+		n = n >=(count -1) ?0 : ++n;
+		console.log(n) 
+		$(".banner li").eq(n).trigger('click');  
+	} 
+</script>
+</head>
+
+<body>
+	<div class="banner">
+		<ul>
+			<li class="on">1</li>
+			<li>2</li>  
+			<li>3</li>
+		</ul>
+		<div class="list">
+			<a href=""><img src="images/1.jpg" alt=""></a>
+			<a href=""><img src="images/2.jpg" alt=""></a>
+			<a href=""><img src="images/3.jpg" alt=""></a>
+		</div>		
+	</div>
+
+
+
+</body> 
+</html>   
