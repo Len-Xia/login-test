@@ -5,7 +5,8 @@
 	<title>Document</title>
 </head>
 <body>
-	<div>登录：</div>
-	<div>密码：</div>
+	<div>登录：wen</div>
+	<div>密码：111</div>
+	<a href="hello.html">Hello</a>
 </body>
 </html>
